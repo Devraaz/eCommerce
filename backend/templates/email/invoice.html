@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      .container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: auto;
+      }
+      h2 {
+        color: #4caf50;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #777777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      {% if order.delivery_status == 'Cancelled' %}
+        <h2>Dear {{ user.name }}!</h2>
+        <p>We have received your request and would like to confirm that your order has been successfully cancelled.</p>
+        <p>If you have any questions or need further assistance, feel free to reply to this email or contact our support team. We're here to help!</p>
+        <div class="footer">
+          <p>
+            Best Regards,<br />
+            Fashion Nana Team
+          </p>
+        </div>
+      {% else %}
+        <h2>Thank You for Your Order, {{ user.name }}!</h2>
+        <p>
+          We are excited to let you know that your order
+          <strong>#{{ order.order_no }}</strong> has been successfully
+          {{ order.delivery_status }}.
+        </p>
+
+        <p>Here are the details of your order:</p>
+        <ul>
+          {% for item in items %}
+            <li>{{ item.name }} - Quantity: {{ item.quantity }} - Price: ₹{{ item.product_price }}</li>
+          {% endfor %}
+        </ul>
+
+        <p>
+          <strong>Total Amount:</strong> ₹{{ order.net_amount }}
+        </p>
+
+        <p>
+          {% if order.delivery_status != 'Delivered' %}
+            We are processing your order and will send you another email once it has been{% if order.delivery_status == 'Placed' %}
+              shipped.
+            {% elif order.delivery_status == 'Shipped' %}
+              delivered.
+            {% endif %}If you have any questions, feel free to reply to this email or contact our support team.
+          {% else %}
+            Thank you for your purchase. If you have any questions, feel free to reply to this email or contact our support team.
+          {% endif %}
+        </p>
+
+        <p>Thank you for choosing us! We look forward to serving you again.</p>
+
+        <div class="footer">
+          <p>
+            Best Regards,<br />
+            Fashion Nana Team
+          </p>
+        </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

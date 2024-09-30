@@ -10,6 +10,8 @@ import CardContent from "@mui/material/CardContent";
 import { TiTick } from "react-icons/ti";
 import { IoIosCloseCircle } from "react-icons/io";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Address = () => {
   const { IsAuthenticated, user } = useContext(AuthContext);
   const [address, setAddress] = useState([]);
@@ -33,16 +35,12 @@ const Address = () => {
         console.log(key, value);
       }
 
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/users/addAddress/",
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+      const res = await axios.post(`${API_URL}/api/users/addAddress/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
-      );
+      });
       toast.success("Address Saved Successfully");
     } catch (error) {
       console.error("Error saving Address", error);
@@ -53,15 +51,12 @@ const Address = () => {
     const fetchAddress = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/users/addAddress/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+        const res = await axios.get(`${API_URL}/api/users/addAddress/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        );
+        });
         setAddress(res.data);
       } catch (error) {
         console.log("Error ", error);
@@ -77,7 +72,7 @@ const Address = () => {
     try {
       const token = localStorage.getItem("access_token");
       const res = await axios.patch(
-        `http://127.0.0.1:8000/api/users/addAddress/${id}/`,
+        `${API_URL}/api/users/addAddress/${id}/`,
         {
           is_current: "True",
         },
@@ -97,15 +92,12 @@ const Address = () => {
     console.log(id);
     try {
       const token = localStorage.getItem("access_token");
-      const res = await axios.delete(
-        `http://127.0.0.1:8000/api/users/addAddress/${id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
+      const res = await axios.delete(`${API_URL}/api/users/addAddress/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
-      );
+      });
     } catch (error) {
       console.log("Error ", error);
     }

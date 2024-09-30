@@ -13,6 +13,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Analytics = () => {
   const [totalOrders, setTotalOrders] = useState(0);
   const [deliveredOrders, setDeliveredOrders] = useState(0);
@@ -20,7 +22,6 @@ const Analytics = () => {
   const [todaysOrder, setTodaysOrder] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
   const [todaysNewUser, setTodaysNewUser] = useState(0);
-
   const [ordersPerDay, setOrdersPerDay] = useState([]);
   const [userPerDay, setUserPerDay] = useState([]);
 
@@ -28,15 +29,12 @@ const Analytics = () => {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/orders/orders/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+        const res = await axios.get(`${API_URL}/api/orders/orders/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        );
+        });
 
         const orders = res.data;
         console.log(orders);
@@ -87,15 +85,12 @@ const Analytics = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const resUsr = await axios.get(
-          "http://127.0.0.1:8000/api/users/users/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+        const resUsr = await axios.get(`${API_URL}/api/users/users/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        );
+        });
 
         const users = resUsr.data;
         // Group users by date

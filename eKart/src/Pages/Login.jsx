@@ -10,13 +10,13 @@ import { Helmet } from "react-helmet";
 import { BiHide, BiShow } from "react-icons/bi";
 import Footer from "../Sections/Footer";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const Login = () => {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useContext(AuthContext);
   const [pswdShow, setPswdShow] = useState(true);
   const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false); // Remember Me checkbox state
-
   if (isAuthenticated) {
     navigate("/User/Dashboard");
   }
@@ -50,10 +50,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/users/login/",
-        data,
-      );
+      const res = await axios.post(`${API_URL}/api/users/login/`, data);
       const { access, refresh } = res.data.token;
       toast.success(`Login Succesful`);
       login(access, refresh);

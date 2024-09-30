@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios"; // If you're using axios for API calls
 import Button2 from "../Components/Button2";
 import Card from "../Components/Card";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Filters = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const Filters = () => {
   const [maxPrice, setMaxPrice] = useState("");
   const params = new URLSearchParams(location.search);
   const searchWord = params.get("search");
+
   const fetchSearch = async () => {
     const searchTerm = params.get("search");
 
@@ -26,7 +28,7 @@ const Filters = () => {
       setLoading(true);
       setError(null);
 
-      let apiUrl = `http://127.0.0.1:8000/api/products/all/?search=${searchTerm}`;
+      let apiUrl = `${API_URL}/api/products/all/?search=${searchTerm}`;
 
       // Append price range filters if available
       if (minPrice) apiUrl += `&min_price=${minPrice}`;

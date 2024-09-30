@@ -7,6 +7,8 @@ import Navbar from "../../Sections/Navbar";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ResetPassword = () => {
   const [pswdShow, setPswdShow] = useState(true);
   const { uid, token } = useParams();
@@ -29,7 +31,7 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        `http://127.0.0.1:8000/api/users/reset-password/${uid}/${token}/`,
+        `${API_URL}/api/users/reset-password/${uid}/${token}/`,
         data,
       );
       toast.success(`Changed Successfully`);

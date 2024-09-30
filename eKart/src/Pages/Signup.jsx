@@ -10,11 +10,12 @@ import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Sections/Footer";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Signup = () => {
   const [pswdShow, setPswdShow] = useState(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   const { isAuthenticated } = useContext(AuthContext);
   const formRef = useRef(null);
   const imageRef = useRef(null);
@@ -57,7 +58,7 @@ const Signup = () => {
     try {
       // console.log(data)
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/users/register/",
+        `${API_URL}/api/users/register/`,
         data,
       );
       toast.success(`Registration Succesful`);

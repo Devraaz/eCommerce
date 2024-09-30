@@ -11,13 +11,13 @@ import Content from "../../Components/Content";
 import Footer from "../../Sections/Footer";
 import indianBoy from "../../assets/images/boy-indian-kid.svg";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [order, setOrder] = useState([]);
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   const { IsAuthenticated } = useContext(AuthContext);
-
   const [totalOrders, setTotalOrders] = useState(0);
   const [deliveredOrders, setDeliveredOrders] = useState(0);
   const [cancelledOrders, setCancelledOrders] = useState(0);
@@ -29,7 +29,7 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem("access_token");
         const res = await axios.get(
-          "http://127.0.0.1:8000/api/orders/orders/user_orders/",
+          `${API_URL}/api/orders/orders/user_orders/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

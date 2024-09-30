@@ -5,6 +5,7 @@ import Button from "../../Components/Button";
 import Navbar from "../../Sections/Navbar";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ResetMail = () => {
   const {
@@ -19,7 +20,7 @@ const ResetMail = () => {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/users/send-reset-pswd-mail/",
+        `${API_URL}/api/users/send-reset-pswd-mail/`,
         data,
       );
       console.log(res.data);

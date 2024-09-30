@@ -20,11 +20,12 @@ import Typography from "@mui/material/Typography";
 import Fade from "@mui/material/Fade";
 import Modal from "@mui/material/Modal";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const UserData = () => {
   const [user, setUser] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [address, setAddress] = useState([]);
-
   const style = {
     position: "absolute",
     top: "50%",
@@ -41,7 +42,7 @@ const UserData = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const res = await axios.get("http://127.0.0.1:8000/api/users/users/", {
+        const res = await axios.get(`${API_URL}/api/users/users/`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

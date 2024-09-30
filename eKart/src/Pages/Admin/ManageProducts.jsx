@@ -17,15 +17,15 @@ import Fade from "@mui/material/Fade";
 import Modal from "@mui/material/Modal";
 
 import { MenuItem, Select, InputLabel, FormControl } from "@mui/material";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/products/all/");
+        const res = await axios.get(`${API_URL}/api/products/all/`);
         setProducts(res.data);
       } catch (error) {
         console.error(error);
@@ -35,15 +35,12 @@ const ManageProducts = () => {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/orders/orders/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+        const res = await axios.get(`${API_URL}/api/orders/orders/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        );
+        });
         setOrders(res.data);
       } catch (error) {
         console.error(error);

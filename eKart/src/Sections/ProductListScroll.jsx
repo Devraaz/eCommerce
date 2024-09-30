@@ -43,6 +43,10 @@ const ProductListScroll = (props) => {
                 slidesPerView: 1, // 1 slide per view for small screens
               },
               768: {
+                slidesPerView: 3, // 4 slides per view for large screens
+                spaceBetween: 20, // Space between slides on large screens
+              },
+              988: {
                 slidesPerView: 4, // 4 slides per view for large screens
                 spaceBetween: 20, // Space between slides on large screens
               },

@@ -30,7 +30,6 @@ const Footer = () => {
     { id: 3, src: "/", text: "Refund" },
     { id: 4, src: "/", text: "Discounts" },
     { id: 5, src: "/", text: "Shipping" },
-    { id: 6, src: "/AdminLogin", text: "AdminLogin" },
   ];
 
   const handleMove = () => {

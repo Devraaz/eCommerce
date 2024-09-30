@@ -25,6 +25,7 @@ const ImageDisplayGallery = React.lazy(
   () => import("../Components/ImageDisplayGallery"),
 );
 
+const API_URL = import.meta.env.VITE_API_URL;
 const ProductPage = () => {
   const [data, setData] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -34,7 +35,6 @@ const ProductPage = () => {
 
   let { pid } = useParams();
   pid = Number(pid);
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const wishlist = useSelector((state) => state.wishlist);
@@ -60,9 +60,7 @@ const ProductPage = () => {
 
         //   setData(res);
         // }
-        const res = await axios.get(
-          `http://127.0.0.1:8000/api/products/all/${pid}/`,
-        );
+        const res = await axios.get(`${API_URL}/api/products/all/${pid}/`);
         setData(res.data);
       } catch (error) {
         console.log(error);

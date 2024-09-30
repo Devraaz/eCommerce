@@ -38,6 +38,8 @@ const style = {
   p: 4,
 };
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ViewOrders = () => {
   const [data, setData] = useState([]);
   const [productItems, setProductItems] = useState([]);
@@ -46,7 +48,6 @@ const ViewOrders = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [productImages, setProductImages] = useState({});
-
   const handleClose = () => {
     setOpen(false);
     setProductItems([]);
@@ -60,7 +61,7 @@ const ViewOrders = () => {
     for (const item of items) {
       try {
         const res = await axios.get(
-          `http://127.0.0.1:8000/api/products/all/${item.product_id}`,
+          `${API_URL}/api/products/all/${item.product_id}`,
         );
         images[item.product_id] = res.data.images[0].image; // Store the image using product ID as key
       } catch (error) {
@@ -74,15 +75,12 @@ const ViewOrders = () => {
     const token = localStorage.getItem("access_token");
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/orders/orders/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+        const res = await axios.get(`${API_URL}/api/orders/orders/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        );
+        });
         const fetchedData = res.data;
         console.log(fetchedData);
         setData(fetchedData);
@@ -106,7 +104,7 @@ const ViewOrders = () => {
     try {
       const token = localStorage.getItem("access_token");
       await axios.patch(
-        `http://127.0.0.1:8000/api/orders/orders/${orderId.id}/update_status/`,
+        `${API_URL}/api/orders/orders/${orderId.id}/update_status/`,
         {
           delivery_status: newStatus,
         },

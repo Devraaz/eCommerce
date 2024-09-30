@@ -9,13 +9,13 @@ import { AuthContext } from "../AuthProvider";
 import { Helmet } from "react-helmet";
 import { BiHide, BiShow } from "react-icons/bi";
 import Footer from "../Sections/Footer";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const AdminLogin = () => {
   const navigate = useNavigate();
   const { login, isAuthenticated } = useContext(AuthContext);
   const [pswdShow, setPswdShow] = useState(true);
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/Admin");
@@ -39,10 +39,7 @@ const AdminLogin = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/users/admin-login/",
-        data,
-      );
+      const res = await axios.post(`${API_URL}/api/users/admin-login/`, data);
       const { access, refresh } = res.data.token;
       toast.success(`Login Succesful`);
       login(access, refresh);

@@ -14,6 +14,8 @@ import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import { Typography } from "@mui/material";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ProductList = React.lazy(() => import("../Sections/ProductList"));
 const ProductListScroll = React.lazy(
   () => import("../Sections/ProductListScroll"),
@@ -38,10 +40,7 @@ const HomePage = () => {
         // }
 
         // const res = await axios.get();
-        const res = await axios.get(
-          "http://127.0.0.1:8000/api/products/all/",
-          "http://192.168.0.103:8000/api/products/all/",
-        );
+        const res = await axios.get(`${API_URL}/api/products/all/`);
 
         const newData = res.data.slice(-4);
         const scrollData = res.data.slice(-10);

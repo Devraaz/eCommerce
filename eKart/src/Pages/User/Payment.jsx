@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { Navigate, useNavigate } from "react-router-dom";
 import { clearCart } from "../../redux/Cart/CartSlice";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Payment = () => {
   const cartItems = useSelector((state) => state.cart);
   const navigate = useNavigate();
@@ -60,7 +62,7 @@ const Payment = () => {
     try {
       const token = localStorage.getItem("access_token");
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/orders/orders/", // Adjust to your API endpoint
+        `${API_URL}/api/orders/orders/`, // Adjust to your API endpoint
         orderData,
         {
           headers: {

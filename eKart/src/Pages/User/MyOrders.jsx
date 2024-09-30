@@ -18,11 +18,13 @@ import Typography from "@mui/material/Typography";
 import Fade from "@mui/material/Fade";
 import Modal from "@mui/material/Modal";
 import { Link } from "react-router-dom";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const MyOrders = () => {
   const [order, setOrder] = useState([]);
   const [productItems, setProductItems] = useState([]);
   const [open, setOpen] = React.useState(false);
-
   const [productImages, setProductImages] = useState({});
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const MyOrders = () => {
       try {
         const token = localStorage.getItem("access_token");
         const res = await axios.get(
-          "http://127.0.0.1:8000/api/orders/orders/user_orders/",
+          `${API_URL}/api/orders/orders/user_orders/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -77,7 +79,7 @@ const MyOrders = () => {
     for (const item of items) {
       try {
         const res = await axios.get(
-          `http://127.0.0.1:8000/api/products/all/${item.product_id}`,
+          `${API_URL}/api/products/all/${item.product_id}`,
         );
         images[item.product_id] = res.data.images[0].image; // Store the image using product ID as key
       } catch (error) {
@@ -91,7 +93,7 @@ const MyOrders = () => {
     try {
       const token = localStorage.getItem("access_token");
       await axios.patch(
-        `http://127.0.0.1:8000/api/orders/orders/${orderId}/update_status/`,
+        `${API_URL}/api/orders/orders/${orderId}/update_status/`,
         { delivery_status: "Cancelled" },
         {
           headers: {

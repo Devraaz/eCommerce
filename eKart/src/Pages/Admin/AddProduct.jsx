@@ -11,6 +11,8 @@ import "../../quill.css";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AddProduct = () => {
   const quillRef = useRef(null);
   const [categories, setCategories] = useState([]);
@@ -69,7 +71,7 @@ const AddProduct = () => {
       }
 
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/products/addproducts/",
+        `${API_URL}/api/products/addproducts/`,
         formData,
         {
           headers: {
@@ -112,15 +114,12 @@ const AddProduct = () => {
     const fetchCategories = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const result = await axios.get(
-          "http://127.0.0.1:8000/api/products/categories/",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
+        const result = await axios.get(`${API_URL}/api/products/categories/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
-        );
+        });
         setCategories(result.data);
       } catch (error) {
         console.log("Error Fetching Cateogries", error);

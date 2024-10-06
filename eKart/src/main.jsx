@@ -12,6 +12,7 @@ import AdminLogin from "./Pages/AdminLogin.jsx";
 import Dashboard from "./Pages/User/Dashboard.jsx";
 import AdDashboard from "./Pages/Admin/AdDashboard.jsx";
 import Profile from "./Pages/User/Profile.jsx";
+import Terms from "./Pages/Terms.jsx";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -56,6 +57,7 @@ const router = createBrowserRouter([
   { path: "/AdminLogin", element: <AdminLogin /> },
   { path: "/Wishlist", element: <Wishlist /> },
   { path: "/filter", element: <Filters /> },
+  { path: "/Terms", element: <Terms /> },
 
   { path: "/User/ResetPassword/:uid/:token", element: <ResetPassword /> },
   { path: "/User/ResetMail", element: <ResetMail /> },

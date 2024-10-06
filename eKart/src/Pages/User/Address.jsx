@@ -64,7 +64,7 @@ const Address = () => {
     };
 
     fetchAddress();
-  }, [address]);
+  }, []);
 
   const handleSelect = async (id) => {
     setCurrentAddress(id);

@@ -40,7 +40,7 @@ const ProductListScroll = (props) => {
             breakpoints={{
               // Define breakpoints for responsiveness
               320: {
-                slidesPerView: 1, // 1 slide per view for small screens
+                slidesPerView: 2, // 1 slide per view for small screens
               },
               768: {
                 slidesPerView: 3, // 4 slides per view for large screens

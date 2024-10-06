@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../Sections/Navbar";
 import Footer from "../Sections/Footer";
-import ProductList from "../Sections/ProductList";
 import { Helmet } from "react-helmet";
 
 import { useEffect, useState } from "react";
@@ -18,6 +17,8 @@ const Filters = () => {
   const [error, setError] = useState(null);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [size, setSize] = useState("");
+
   const params = new URLSearchParams(location.search);
   const searchWord = params.get("search");
 
@@ -50,12 +51,12 @@ const Filters = () => {
   return (
     <>
       <Helmet>
-        <title>Filter | India's Smartest Shopping Point</title>
+        <title>Filter | Fashion Nana | India Smartest Shopping Point</title>
       </Helmet>
       <Navbar />
 
-      <section className="mx-auto flex flex-col justify-center gap-10 bg-slate-100 p-10 md:flex-row">
-        <div className="h-fit w-[96%] rounded-md border bg-white p-3 shadow-md md:w-[25%]">
+      <section className="mx-auto flex flex-col justify-center gap-10 bg-slate-100 p-2 md:flex-row md:p-10">
+        <div className="mx-auto h-fit w-[96%] rounded-md border bg-white p-3 shadow-md md:mx-0 md:w-[25%]">
           <h3 className="text-center text-lg font-medium">FILTER</h3>
           <hr />
           <div className="price-filter mt-10 gap-5 p-1">
@@ -79,6 +80,16 @@ const Filters = () => {
               />
             </label>
 
+            {/* <label className="mb-2 block text-sm font-bold text-gray-700">
+              Enter Size:&nbsp;
+              <input
+                type="text"
+                className="w-36 appearance-none rounded border px-2 py-2 leading-tight text-gray-700 shadow focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-500"
+                value=""
+                onChange={(e) => setSize(e.target.value)}
+              />
+            </label> */}
+
             <button
               onClick={fetchSearch}
               className="mx-auto rounded-md border bg-slate-300 px-3 py-1 transition-all hover:bg-slate-600 hover:text-white"
@@ -87,7 +98,7 @@ const Filters = () => {
             </button>
           </div>
         </div>
-        <div className="h-auto w-[96%] space-y-5 rounded-md border bg-white p-3 shadow-md md:w-[70%]">
+        <div className="h-auto w-[99%] space-y-5 rounded-md border bg-white p-3 shadow-md md:w-[70%]">
           <p className="text-xl font-semibold">
             Your search result for "{searchWord}"
           </p>

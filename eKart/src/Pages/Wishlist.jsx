@@ -6,7 +6,8 @@ import ItemList from "../Components/ItemList";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedWishList } from "../redux/Wishlist/WishlistSlice";
 import Card from "../Components/Card";
-import ProductList from "../Sections/ProductList";
+
+const ProductList = React.lazy(() => import("../Sections/ProductList"));
 import { Helmet } from "react-helmet";
 
 const Wishlist = () => {

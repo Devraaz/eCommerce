@@ -151,12 +151,12 @@ const Analytics = () => {
             value={todaysOrder}
           />
           <LittleCard
-            url="/Admin/vieworders"
+            url="/Admin/userdata/"
             title="Total User"
             value={totalUsers}
           />
           <LittleCard
-            url="/Admin/vieworders"
+            url="/Admin/userdata/"
             title="New Users"
             value={todaysNewUser}
           />

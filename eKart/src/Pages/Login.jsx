@@ -86,7 +86,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Login | India's Smartest Shopping Point</title>
+        <title>Login | Fashion Nana </title>
       </Helmet>
       <Navbar />
 

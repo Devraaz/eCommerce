@@ -120,7 +120,7 @@ const MyOrders = () => {
       </Helmet>
       <Navbar />
       <section className="flex h-auto w-[99.9%] flex-col items-center justify-center bg-slate-200">
-        <div className="m-3 h-auto w-[80%] rounded-md bg-slate-50 shadow-lg">
+        <div className="m-3 h-auto w-[100%] rounded-md bg-slate-50 shadow-lg md:w-[80%]">
           <div className="text-center text-lg font-bold text-primary">
             My Orders
           </div>
@@ -264,7 +264,7 @@ const MyOrders = () => {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <Box className="absolute left-[50%] top-[50%] w-96 -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-10 shadow-md md:w-2/3">
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Order Details
             </Typography>

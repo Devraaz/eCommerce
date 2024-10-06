@@ -9,11 +9,16 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import frame2 from "../assets/images/frame2.png";
+
+import banner1 from "../assets/images/banner1.png";
+import banner2 from "../assets/images/banner2.png";
+import banner3 from "../assets/images/banner3.png";
+import banner4 from "../assets/images/banner4.png";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Card from "../Components/Card";
 
-const BannerImg = (props) => {
+const BannerImg = () => {
   return (
     <>
       <Swiper
@@ -42,21 +47,28 @@ const BannerImg = (props) => {
       >
         <SwiperSlide>
           <img
-            src={frame2}
+            src={banner1}
             className="z-0 w-auto object-cover sm:p-2 md:h-auto md:w-screen"
             alt="BannerImg"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={frame2}
+            src={banner2}
             className="z-0 w-auto object-cover sm:p-2 md:h-auto md:w-screen"
             alt="BannerImg"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={frame2}
+            src={banner3}
+            className="z-0 w-auto object-cover sm:p-2 md:h-auto md:w-screen"
+            alt="BannerImg"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src={banner4}
             className="z-0 w-auto object-cover sm:p-2 md:h-auto md:w-screen"
             alt="BannerImg"
           />

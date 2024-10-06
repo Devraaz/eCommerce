@@ -79,7 +79,7 @@ const Cart = () => {
   return (
     <>
       <Helmet>
-        <title>Cart | India's Smartest Shopping Point</title>
+        <title>Cart | Fashion Nana | Koraput Smartest Shopping Point</title>
       </Helmet>
       <Navbar />
 

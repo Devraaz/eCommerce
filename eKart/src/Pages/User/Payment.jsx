@@ -44,14 +44,14 @@ const Payment = () => {
     gross_amount: (totalAmount - totalDiscount + shippingCharge).toFixed(2),
     shipping_charge: shippingCharge,
     net_amount: netAmount.toFixed(2),
-    delivery_status: "Processing",
+    delivery_status: "Placed",
     payment_status: "Not Paid",
     payment_options: "COD", // Change as needed
     items: cartItems.map((item) => ({
       name: item.product.product_name,
       product_id: item.product.id,
       quantity: item.selectedQuantity,
-      product_price: netAmount,
+      product_price: item.product.net_price,
       size: item.selectedSize, // Adjust according to your item structure
     })),
   };

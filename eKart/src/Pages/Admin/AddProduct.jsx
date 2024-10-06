@@ -14,6 +14,7 @@ import { Helmet } from "react-helmet";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const AddProduct = () => {
+  const [loading, setLoading] = useState(false);
   const quillRef = useRef(null);
   const [categories, setCategories] = useState([]);
   const {
@@ -40,6 +41,7 @@ const AddProduct = () => {
 
   // Handle Form Data
   const onSubmit = async (data) => {
+    setLoading(true);
     try {
       const token = localStorage.getItem("access_token");
 
@@ -86,6 +88,8 @@ const AddProduct = () => {
       reset();
     } catch (error) {
       console.error("Error saving product:", error);
+    } finally {
+      setLoading(false);
     }
 
     console.log("Form Data:", data);
@@ -418,9 +422,15 @@ const AddProduct = () => {
             <div className="flex flex-row items-start gap-4">
               <button
                 type="submit"
-                className="w-full rounded-md bg-green-500 p-2 text-white"
+                className="peer w-full rounded-md bg-green-500 p-2 text-white"
               >
-                Submit
+                {loading ? (
+                  <span className="loader peer-active:bg-green-300">
+                    Submitting...
+                  </span>
+                ) : (
+                  "Submit"
+                )}
               </button>
               <button
                 className="w-full rounded-md bg-blue-500 p-2 text-white"

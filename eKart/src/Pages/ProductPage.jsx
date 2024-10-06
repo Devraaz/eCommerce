@@ -206,9 +206,6 @@ const ProductPage = () => {
                 className="h-8 w-16 rounded border p-1"
               >
                 <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
               </select>
             </div>
 
@@ -218,7 +215,7 @@ const ProductPage = () => {
                 // text="Add to Cart"
                 onClick={handleCart}
               />
-              <Button2 text="Buy Now" />
+              {/* <Button2 text="Buy Now" /> */}
             </div>
           </div>
         </div>

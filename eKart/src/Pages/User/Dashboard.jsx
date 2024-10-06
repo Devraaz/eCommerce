@@ -99,8 +99,8 @@ const Dashboard = () => {
         <title>Dashboard | India's Smartest Shopping Point</title>
       </Helmet>
       <Navbar />
-      <section className="flex w-[99.9%] flex-col items-center justify-center bg-slate-200 p-10">
-        <div className="w-[98%] rounded-md bg-slate-50 p-5 shadow-lg md:w-[80%]">
+      <section className="flex w-[99.9%] flex-col items-center justify-center bg-slate-200 p-2 md:p-10">
+        <div className="w-[100%] rounded-md bg-slate-50 p-5 shadow-lg md:w-[80%]">
           <div className="text-center text-lg font-bold text-primary">
             PROFILE
           </div>
@@ -136,7 +136,7 @@ const Dashboard = () => {
                   {data.email}
                 </p>
               </p>
-              <div className="grid grid-flow-row grid-cols-2 gap-5">
+              <div className="grid grid-flow-row grid-cols-1 gap-5 md:grid-cols-2">
                 <Link
                   to="/User/MyOrders"
                   className="items group relative h-20 rounded-md border transition-all duration-300 hover:bg-gray-100"

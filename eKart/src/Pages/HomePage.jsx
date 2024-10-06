@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -62,7 +63,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>ShopKart | India's Smartest Shopping Point</title>
+        <title>Fashion Nana | Koraput Smartest Shopping Point</title>
       </Helmet>
       <Navbar />
       <BannerImg />
@@ -86,7 +87,7 @@ const HomePage = () => {
             <h1 className="after:content[] relative from-red-600 to-purple-700 p-5 text-2xl font-bold text-white after:absolute after:-bottom-3 after:left-5 after:h-1 after:w-20 after:bg-gradient-to-tr md:text-3xl">
               The Trend is Here !
             </h1>
-            <p className="text-md w-full p-10 text-center text-white">
+            <div className="text-md w-full p-10 text-center text-white">
               <p className="text-2xl font-extralight">PREMIUM QUALITY </p>
               <br />
               <p className="font-cursive text-5xl opacity-80 md:text-7xl">
@@ -96,7 +97,7 @@ const HomePage = () => {
               <p className="animate-pulse text-xl opacity-20 md:text-xl">
                 Limited Deal!
               </p>
-            </p>
+            </div>
           </div>
           <div className="image mx-auto w-[90%] md:w-[50%]">
             <img src={image1} alt="" className="w-[80%] pt-10 md:w-[60%]" />
@@ -119,30 +120,39 @@ const HomePage = () => {
           Category
         </h1>
         <div className="mx-auto mt-16 flex w-[90%] flex-col md:flex-row md:justify-center">
-          <div className="mx-auto mb-4 flex w-64 cursor-pointer flex-col gap-5 rounded-md border bg-white p-2 text-center">
+          <Link
+            to={`/filter?search=Formal`}
+            className="mx-auto mb-4 flex w-64 cursor-pointer flex-col gap-5 rounded-md border bg-white p-2 text-center"
+          >
             <p className="text-xl font-semibold">Formals</p>
             <img
               src={image2}
               alt=""
               className="transition-all hover:scale-95"
             />
-          </div>
-          <div className="mx-auto mb-4 flex w-64 cursor-pointer flex-col gap-5 rounded-md border bg-white p-2 text-center">
+          </Link>
+          <Link
+            to={`/filter?search=t-shirt`}
+            className="mx-auto mb-4 flex w-64 cursor-pointer flex-col gap-5 rounded-md border bg-white p-2 text-center"
+          >
             <p className="text-xl font-semibold">T-Shirts </p>
             <img
               src={image3}
               alt=""
               className="transition-all hover:scale-95"
             />
-          </div>
-          <div className="mx-auto mb-4 flex w-64 cursor-pointer flex-col gap-5 rounded-md border bg-white p-2 text-center">
-            <p className="text-xl font-semibold">Trowsers</p>
+          </Link>
+          <Link
+            to={`/filter?search=trouser`}
+            className="mx-auto mb-4 flex w-64 cursor-pointer flex-col gap-5 rounded-md border bg-white p-2 text-center"
+          >
+            <p className="text-xl font-semibold">Trouser</p>
             <img
               src={image4}
               alt=""
               className="transition-all hover:scale-95"
             />
-          </div>
+          </Link>
         </div>
       </section>
       <Footer />

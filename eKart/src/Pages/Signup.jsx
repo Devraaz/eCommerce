@@ -57,10 +57,7 @@ const Signup = () => {
     setLoading(true);
     try {
       // console.log(data)
-      const response = await axios.post(
-        `${API_URL}/api/users/register/`,
-        data,
-      );
+      const response = await axios.post(`${API_URL}/api/users/register/`, data);
       toast.success(`Registration Succesful`);
 
       reset(); // Clear form fields
@@ -234,9 +231,9 @@ const Signup = () => {
                 })}
               />
             </div>
-            <label htmlFor="checks" className=" ">
+            <Link to={"/Terms"} htmlFor="checks" className=" ">
               Terms & Condition:{" "}
-            </label>
+            </Link>
             {errors.tc && (
               <div className="text-sm text-red-500">{errors.tc.message}</div>
             )}

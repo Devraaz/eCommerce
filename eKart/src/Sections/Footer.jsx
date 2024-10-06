@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const f_nana = [
-    { id: 1, src: "/", text: "Who we are" },
-    { id: 2, src: "/", text: "Join Our Team" },
-    { id: 3, src: "/", text: "Terms & Condition" },
+    { id: 1, src: "/About", text: "Who we are" },
+    { id: 3, src: "/Terms", text: "Terms & Condition" },
     { id: 4, src: "/", text: "Privacy Policy" },
-    { id: 5, src: "/", text: "Payments & Coupon" },
-    { id: 6, src: "/", text: "Return & Refund Policy" },
+    { id: 5, src: "/AdminLogin", text: "Admin Login" },
+    { id: 6, src: "/", text: "Payments & Coupon" },
+    { id: 7, src: "/", text: "Return & Refund Policy" },
   ];
   const connection = [
     { id: 1, src: "/", text: "Facebook" },
@@ -51,8 +51,8 @@ const Footer = () => {
           <h1 className="mb-5 text-xl font-medium text-white">FASHION NANA</h1>
           <ul className="text-white">
             {f_nana.map((data, index) => (
-              <li className="mt-3" key={data.id}>
-                <Link>{data.text}</Link>
+              <li className="mt-3 text-sm" key={data.id}>
+                <Link to={data.src}>{data.text}</Link>
               </li>
             ))}
           </ul>
@@ -63,7 +63,7 @@ const Footer = () => {
           </h1>
           <ul className="text-white">
             {connection.map((data, index) => (
-              <li className="mt-3" key={data.id}>
+              <li className="mt-3 text-sm" key={data.id}>
                 <Link>{data.text}</Link>
               </li>
             ))}
@@ -73,7 +73,7 @@ const Footer = () => {
           <h1 className="mb-5 text-xl font-medium text-white">SHOP BY</h1>
           <ul className="text-white">
             {categories.map((data, index) => (
-              <li className="mt-3" key={data.id}>
+              <li className="mt-3 text-sm" key={data.id}>
                 <Link>{data.text}</Link>
               </li>
             ))}
@@ -83,15 +83,15 @@ const Footer = () => {
           <h1 className="mb-5 text-xl font-medium text-white">HELP</h1>
           <ul className="text-white">
             {help.map((data, index) => (
-              <li className="mt-3" key={data.id}>
+              <li className="mt-3 text-sm" key={data.id}>
                 <Link to={data.src}>{data.text}</Link>
               </li>
             ))}
           </ul>
         </div>
       </footer>
-      <footer className="mx-auto bg-secondary p-1 text-center text-slate-100">
-        <hr className="mx-auto w-40" />
+      <footer className="mx-auto bg-secondary p-1 text-center text-sm text-slate-100">
+        <hr className="mx-auto mb-2 w-40" />
         Fashion Nana &copy; All Rights Reserved | Terms & Condition | Privacy
         Policy | Powered By:{" "}
         <a href="https://www.webokraft.in">Webokraft Solutions</a>

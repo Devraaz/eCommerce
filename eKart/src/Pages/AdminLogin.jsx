@@ -62,7 +62,7 @@ const AdminLogin = () => {
   return (
     <>
       <Helmet>
-        <title>Login | India's Smartest Shopping Point</title>
+        <title>Login |Koraput Smartest Shopping Point</title>
       </Helmet>
       <Navbar />
 

@@ -194,7 +194,7 @@ const ViewOrders = () => {
                     </TableCell>
                     <TableCell align="left">
                       <span
-                        className="cursor-pointer text-slate-300 hover:text-slate-600"
+                        className="cursor-pointer text-slate-100 hover:text-slate-400"
                         onClick={() => handleOpen(item.items)}
                       >
                         {item.order_no}
@@ -284,7 +284,7 @@ const ViewOrders = () => {
           }}
         >
           <Fade in={open}>
-            <Box sx={style}>
+            <Box className="absolute left-[50%] top-[50%] w-96 -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-10 shadow-md md:w-2/3">
               <Typography
                 id="transition-modal-title"
                 variant="h6"

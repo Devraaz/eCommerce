@@ -27,7 +27,7 @@ import { selectedWishListCount } from "../redux/Wishlist/WishlistSlice";
 import { useForm } from "react-hook-form";
 
 const links = [
-  { text: "Shirts" },
+  { text: "Shirt" },
   { text: "Casual" },
   { text: "Oversized Shirts" },
   { text: "Hoodies" },
@@ -217,7 +217,7 @@ const Navbar = () => {
           {links.map((link, index) => (
             <Link
               key={index}
-              to={link.href}
+              to={`/filter?search=${encodeURIComponent(link.text)}`}
               className="text-md w-fit font-medium text-slate-600 hover:text-slate-950"
             >
               {link.text}
@@ -225,7 +225,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hover: absolute bottom-2 text-center text-slate-600">
+        <div className="hover: absolute bottom-5 text-center text-slate-600">
           <Link to="/">Terms & Condition</Link>&nbsp;|&nbsp;
           <Link to="/">Privacy Policy</Link>
         </div>
